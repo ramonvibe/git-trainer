@@ -1,0 +1,7 @@
+{
+  "name": "gitquest-mvp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MVP temporário para treinamento de Git",
+  "scripts": { "start": "node server.js" }
+}

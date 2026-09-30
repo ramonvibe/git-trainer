@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c1018" />
+    <title>GitQuest — Treinamento em Git</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="GitQuest início">
+          <span class="brand-mark">⌘</span>
+          <span><strong>GitQuest</strong><small>treinamento em Git</small></span>
+        </a>
+        <nav class="top-actions" aria-label="Ações principais">
+          <button class="header-btn" id="rankingBtn"><span>♜</span> Ranking</button>
+          <button class="header-btn" id="commentsBtn"><span>☷</span> Comentários <b id="commentCount">4</b></button>
+          <div class="profile-chip"><span class="avatar">VC</span><span><strong>Você</strong><small id="headerPoints">0 XP</small></span></div>
+        </nav>
+      </header>
+
+      <main class="workspace">
+        <aside class="sidebar">
+          <div class="sidebar-head">
+            <div><span class="eyebrow">JORNADA ATUAL</span><h1>Fundamentos do Git</h1></div>
+            <span class="live-dot" title="Progresso salvo localmente"></span>
+          </div>
+          <div class="progress-card">
+            <div class="progress-label"><span>Progresso geral</span><strong id="progressText">0%</strong></div>
+            <div class="progress-track"><span id="progressBar"></span></div>
+            <small id="progressMeta">0 de 30 questões principais</small>
+          </div>
+          <div class="section-title"><span>TRILHA PRINCIPAL</span><span id="mainCount">0/30</span></div>
+          <div class="level-list">
+            <button class="level-row active" data-level="easy"><span class="level-icon easy-icon">01</span><span class="level-copy"><strong>Base sólida</strong><small>Fácil · 10 questões</small></span><span class="level-status" id="easyStatus">0/10</span></button>
+            <button class="level-row locked" data-level="medium"><span class="level-icon medium-icon">02</span><span class="level-copy"><strong>Ganhando ritmo</strong><small>Médio · 10 questões</small></span><span class="level-status" id="mediumStatus">🔒</span></button>
+            <button class="level-row locked" data-level="hard"><span class="level-icon hard-icon">03</span><span class="level-copy"><strong>Modo avançado</strong><small>Difícil · 10 questões</small></span><span class="level-status" id="hardStatus">🔒</span></button>
+          </div>
+          <div class="badge-shelf">
+            <div class="section-title"><span>SUAS BADGES</span><span id="badgeCount">0/4</span></div>
+            <div class="badges"><span class="badge locked-badge" id="badgeEasy" title="Explorador do Git — complete as questões fáceis">✦</span><span class="badge locked-badge" id="badgeMedium" title="Git em prática — complete as questões médias">◆</span><span class="badge locked-badge" id="badgeHard" title="MESTRE NO GIT — complete as questões difíceis">♛</span><span class="badge locked-badge" id="badgeBonus" title="O que você ainda faz aqui? — complete os bônus">∞</span></div>
+          </div>
+          <button class="bonus-link" id="bonusBtn"><span>✦</span><span><strong>Desafios bônus</strong><small>Questões para ir além</small></span><span class="arrow">→</span></button>
+          <div class="sidebar-foot"><span class="tip-orb">?</span><div><strong>Travou em algum comando?</strong><p>Peça uma dica. Errar faz parte do treino.</p></div></div>
+        </aside>
+
+        <section class="terminal-area">
+          <div class="journey-head"><div><span class="eyebrow" id="journeyEyebrow">NÍVEL 01 · FÁCIL</span><h2 id="journeyTitle">Começando do começo</h2></div><div class="streak"><span>✹</span><strong id="streakValue">0</strong><small>sequência</small></div></div>
+          <article class="question-card">
+            <div class="question-top"><span class="question-number" id="questionNumber">QUESTÃO 01</span><span class="difficulty" id="difficultyPill">FÁCIL</span></div>
+            <h3 id="questionTitle">Seu projeto acabou de nascer.</h3>
+            <p id="questionBody">Você criou a pasta do projeto e quer começar a acompanhar seus arquivos com Git. Qual comando prepara o repositório?</p>
+            <div class="question-context" id="questionContext"><span class="context-icon">◎</span><span>Você está dentro da pasta <code>meu-projeto/</code></span></div>
+          </article>
+          <div class="terminal-window">
+            <div class="terminal-top"><div class="terminal-dots"><i></i><i></i><i></i></div><span>terminal — bash</span><span class="terminal-lock">⌘ local</span></div>
+            <div class="terminal-body"><div class="terminal-path"><span>aluno</span><b>:</b><span class="path-text">~/meu-projeto</span><b>$</b></div><input id="commandInput" autocomplete="off" spellcheck="false" aria-label="Digite o comando Git" placeholder="digite seu comando aqui..." autofocus /><div class="terminal-cursor" id="cursorHint">Pressione Enter para executar</div><div class="command-feedback" id="feedback" aria-live="polite"></div></div>
+          </div>
+          <div class="action-row"><button class="help-btn" id="helpBtn"><span>☼</span> Pedir ajuda <kbd>H</kbd></button><div class="attempts" id="attempts">0 tentativas</div><button class="execute-btn" id="executeBtn">Executar comando <span>↵</span></button></div>
+          <div class="tip-box"><span>✦</span><p><strong>Dica rápida</strong> <span id="quickTip">Use comandos em inglês e não se preocupe com maiúsculas. O terminal aceita espaços extras.</span></p></div>
+        </section>
+
+        <aside class="comments-panel" id="commentsPanel" aria-label="Comentários da comunidade">
+          <div class="comments-head"><div><span class="eyebrow">COMUNIDADE</span><h2>Comentários</h2></div><button id="closeComments" aria-label="Fechar comentários">×</button></div>
+          <p class="comments-subtitle">Troque ideias com quem também está treinando.</p>
+          <div class="comments-list" id="commentsList"></div>
+          <form class="comment-form" id="commentForm"><textarea id="commentInput" maxlength="280" placeholder="Escreva uma dica ou conte como resolveu..." required></textarea><div><small>Markdown aceito</small><button type="submit">Enviar <span>↵</span></button></div></form>
+        </aside>
+      </main>
+      <footer>© <span id="year"></span> Treinamento em Git, desenvolvido por Ramon Monteiro <span class="footer-dot">•</span> Feito para quem quer dominar o terminal.</footer>
+    </div>
+
+    <div class="modal-backdrop" id="rankingModal" hidden><section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="rankingTitle"><button class="modal-close" data-close-modal>×</button><span class="eyebrow">TEMPORADA 01</span><h2 id="rankingTitle">Ranking da comunidade</h2><p class="modal-lead">Quanto mais você pratica, mais sobe. A pontuação é salva no servidor.</p><div class="leader-list" id="leaderList"></div><div class="your-rank"><span>Seu ranking atual</span><strong id="yourRank">#— <small>· Você · 0 XP</small></strong></div></section></div>
+
+    <div class="toast" id="toast" role="status"></div>
+    <div class="auth-backdrop" id="authBackdrop" hidden>
+      <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <div class="auth-brand"><span class="brand-mark">⌘</span><span><strong>GitQuest</strong><small>treinamento em Git</small></span></div>
+        <span class="eyebrow">ACESSO DA TURMA</span><h2 id="authTitle">Entre para começar</h2><p id="authLead">Crie seu acesso e acompanhe seu progresso no ranking.</p>
+        <form id="authForm"><label>Seu nome<input id="authName" minlength="2" maxlength="30" autocomplete="username" placeholder="ex.: Ana Souza" required></label><label>Senha<input id="authPassword" type="password" minlength="4" maxlength="72" autocomplete="current-password" placeholder="mínimo de 4 caracteres" required></label><button type="submit" id="authSubmit">Entrar na turma <span>↵</span></button></form>
+        <p class="auth-switch"><span id="authSwitchText">Ainda não tem acesso?</span> <button type="button" id="authSwitch">Criar conta</button></p><p class="auth-error" id="authError"></p>
+      </section>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
